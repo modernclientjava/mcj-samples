@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Point3D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.PickResult;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Material;
@@ -63,7 +64,7 @@ public class EventDemo extends Application {
             sphere = new Sphere(SPHERE_RADIUS);
             sphere.materialProperty().bind(model.materialProperty());
 
-            EventHandler<javafx.scene.input.MouseEvent> handler = event -> {
+            EventHandler<MouseEvent> handler = event -> {
                 PickResult pickResult = event.getPickResult();
                 Point3D point = pickResult.getIntersectedPoint();
                 model.setMaterial(new PhongMaterial(makeColorOutOfPoint3D(point)));

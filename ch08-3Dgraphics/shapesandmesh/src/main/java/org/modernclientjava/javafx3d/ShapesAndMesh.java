@@ -28,6 +28,7 @@ import javafx.scene.shape.MeshView;
 import javafx.scene.shape.Shape3D;
 import javafx.scene.shape.Sphere;
 import javafx.scene.shape.TriangleMesh;
+import javafx.scene.SceneAntialiasing;
 import javafx.stage.Stage;
 
 public class ShapesAndMesh extends Application {
@@ -65,8 +66,6 @@ public class ShapesAndMesh extends Application {
     }
 
     private static class Model {
-
-
         private DoubleProperty rotate = new SimpleDoubleProperty(
                 this, "rotate", 60.0d);
         private ObjectProperty<DrawMode> drawMode = new SimpleObjectProperty<>(
@@ -180,7 +179,7 @@ public class ShapesAndMesh extends Application {
             controlPanel.setPadding(new Insets(10, 10, 10, 10));
 
             BorderPane root = new BorderPane(shapesGroup, null, null, controlPanel, null);
-            scene = new Scene(root, 800, 600);
+            scene = new Scene(root, 800, 600, true, SceneAntialiasing.BALANCED);
         }
 
         private void setupShape3D(Shape3D shape3D, Model model) {

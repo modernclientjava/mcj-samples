@@ -74,7 +74,7 @@ public class LightDemo extends Application {
         public Scene scene;
 
         public Box box;
-         public PerspectiveCamera camera;
+        public PerspectiveCamera camera;
         public PointLight redLight;
         public PointLight blueLight;
 
