@@ -11,6 +11,7 @@ import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.SubScene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -145,6 +146,7 @@ public class ShapesAndMesh extends Application {
             setupShape3D(meshView, model);
 
             Group shapesGroup = new Group(sphere, cylinder, box, meshView);
+            SubScene subScene = new SubScene(shapesGroup, 800, 400, true, SceneAntialiasing.BALANCED);
 
             drawModeComboBox = new ComboBox<>();
             drawModeComboBox.setItems(FXCollections.observableArrayList(
@@ -177,8 +179,9 @@ public class ShapesAndMesh extends Application {
 
             VBox controlPanel = new VBox(10, hbox1, hbox2);
             controlPanel.setPadding(new Insets(10, 10, 10, 10));
+            Group groupSubScene = new Group(subScene);
+            BorderPane root = new BorderPane(groupSubScene, null, null, controlPanel, null);
 
-            BorderPane root = new BorderPane(shapesGroup, null, null, controlPanel, null);
             scene = new Scene(root, 800, 600, true, SceneAntialiasing.BALANCED);
         }
 
