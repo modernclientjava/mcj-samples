@@ -13,7 +13,7 @@ javafx {
 
 mainClassName = "$moduleName/org.modernclients.raspberrypi.HelloFX"
 
-def javaHome = '/opt/jdk-11.0.1+13'
+def javaHome = '/opt/jdk-11.0.4+11'
 def javafxHome = '/opt/armv6hf-sdk'
 
 task runLocalEmbedded(type: Exec) {
