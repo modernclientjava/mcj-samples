@@ -39,7 +39,7 @@ def javafxHome = '/opt/armv6hf-sdk'
 task libs(type: Copy) {
     dependsOn 'jar'
     into "${buildDir}/libs/"
-    from configurations.runtime
+    from configurations.runtimeClasspath
 }
 
 remotes {
