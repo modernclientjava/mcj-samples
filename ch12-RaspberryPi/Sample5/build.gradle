@@ -14,7 +14,7 @@ javafx {
 
 mainClassName = "$moduleName/org.modernclients.raspberrypi.MainApp"
 
-def workingDir = '/home/pi/ModernClients'
+def workingDir = '/home/pi/ModernClients/ch12-RaspberryPi/'
 def javaHome = '/opt/jdk-11.0.4+11'
 def javafxHome = '/opt/armv6hf-sdk'
 
