@@ -11,7 +11,7 @@ javafx {
     modules = [ 'javafx.controls' ]
 }
 
-mainClassName = "$moduleName/org.modernclients.HelloFX"
+mainClassName = "$moduleName/org.modernclients.raspberrypi.HelloFX"
 
 def javaHome = '/opt/jdk-11.0.1+13'
 def javafxHome = '/opt/armv6hf-sdk'
