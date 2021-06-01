@@ -64,4 +64,3 @@ public class NumericPropertiesExample {
         System.out.println("i.get() = " + i.get());
     }
 }
-

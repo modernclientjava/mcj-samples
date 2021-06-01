@@ -51,4 +51,3 @@ public class ArrayChangeEventExample {
         System.out.println("\tDestination = " + ints2);
     }
 }
-
