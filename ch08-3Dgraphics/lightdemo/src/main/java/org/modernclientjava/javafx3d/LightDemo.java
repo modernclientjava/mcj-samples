@@ -110,7 +110,7 @@ public class LightDemo extends Application {
             Rotate rotateX = new Rotate(-20, Rotate.X_AXIS);
             Rotate rotateY = new Rotate(-20, Rotate.Y_AXIS);
             Rotate rotateZ = new Rotate(-20, Rotate.Z_AXIS);
-            Translate translateZ = new Translate(0, 0, -80);
+            Translate translateZ = new Translate(0, 0, -60);
 
             camera.getTransforms().addAll(rotateX, rotateY, rotateZ, translateZ);
 
