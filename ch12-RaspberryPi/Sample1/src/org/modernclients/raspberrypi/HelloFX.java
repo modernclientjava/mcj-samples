@@ -15,7 +15,7 @@ public class HelloFX extends Application {
         Label label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
         Scene scene = new Scene(new StackPane(label), 800, 480);
         stage.setScene(scene);
-        state.setTitle("Hello JavaFX")
+        stage.setTitle("Hello JavaFX");
         stage.show();
     }
 
