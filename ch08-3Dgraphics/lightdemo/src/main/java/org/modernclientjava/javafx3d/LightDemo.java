@@ -231,7 +231,6 @@ public class LightDemo extends Application {
 
         // since JavaFX 16 -->
         private HBox addLightControls(PointLight light) {
-            // since JavaFX 16 -->
             VBox range = createSliderControl("range", light.maxRangeProperty(), 0, 100, light.getMaxRange());
             VBox c = createSliderControl("constant", light.constantAttenuationProperty(), -1, 1, light.getConstantAttenuation());
             VBox lc = createSliderControl("linear", light.linearAttenuationProperty(), -1, 1, light.getLinearAttenuation());
