@@ -7,6 +7,7 @@ public class Main {
     private float temp_max;
     private float temp_min;
     private float temp;
+    private float feels_like;
 
     public float getHumidity() {
         return humidity;
@@ -46,6 +47,14 @@ public class Main {
 
     public void setTemp(float temp) {
         this.temp = temp;
+    }
+
+    public float getFeels_like() {
+        return feels_like;
+    }
+
+    public void setFeels_like(float feelsLike) {
+        this.feels_like = feelsLike;
     }
 
     @Override
