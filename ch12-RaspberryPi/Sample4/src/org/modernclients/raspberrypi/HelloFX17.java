@@ -8,7 +8,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-public class HelloFX11 extends Application {
+public class HelloFX17 extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
