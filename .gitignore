@@ -26,3 +26,5 @@ ch08-3Dgraphics/simplesphere/target
 ch08-3Dgraphics/specularcolordemo/target
 ch08-3Dgraphics/spherecylinderbox/target
 ch12-RaspberryPi/Sample2/target
+ch12-RaspberryPi/Sample7/.gradle
+ch12-RaspberryPi/Sample7/build
