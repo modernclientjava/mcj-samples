@@ -78,7 +78,7 @@ public class GPSService {
         
         String reading = gpsOutput.toString().trim();
 
-        if (! reading.contains("$")) {
+        if (!reading.contains("$")) {
             return;
         }
         
