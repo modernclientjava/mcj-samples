@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 public class UIView extends FXMLView {
 
     public UIView() {
-        this.bundle = ResourceBundle.getBundle("/org/modernclients/raspberrypi/gps/view/ui");
+        this.bundle = ResourceBundle.getBundle(bundleName);
     }
 
 }

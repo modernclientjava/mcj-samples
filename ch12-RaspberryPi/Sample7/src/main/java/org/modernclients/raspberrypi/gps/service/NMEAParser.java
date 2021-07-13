@@ -123,7 +123,7 @@ public class NMEAParser {
     }
 
     private static boolean checksum(String line) {
-        if (line == null || ! line.contains("$") || ! line.contains("*")) {
+        if (line == null || !line.contains("$") || !line.contains("*")) {
             return false;
         }
         String sentence = line.substring(1, line.lastIndexOf("*"));
@@ -136,8 +136,8 @@ public class NMEAParser {
 
         String hex = String.format("0x%02X", c);
         boolean result = hex.equals(lineChecksum);
-        if (! result) {
-            logger.warning("There was an error in the checksum of " + line);
+        if (!result) {
+            logger.warning("There was an error in the checksum of " + line + ": " + hex + " vs " + lineChecksum);
         }
         return result;
     }
