@@ -17,7 +17,7 @@ public class HelloFX extends Application {
         String javafxVersion = System.getProperty("javafx.version");
         Label label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
 
-        ImageView imageView = new ImageView(new Image(HelloFX.class.getResourceAsStream("/hellofx/openduke.png")));
+        ImageView imageView = new ImageView(new Image(HelloFX.class.getResourceAsStream("openduke.png")));
         imageView.setFitHeight(200);
         imageView.setPreserveRatio(true);
 
