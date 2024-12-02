@@ -1,0 +1,21 @@
+package org.modernclients.samples;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.TitledPane;
+import javafx.scene.layout.Pane;
+import org.modernclients.Sample;
+
+import java.util.function.Consumer;
+
+/**
+ * @author Jonathan Giles <jonathan@jonathangiles.net>
+ */
+public class TitledPaneDemo implements Sample {
+
+    @Override
+    public void buildDemo(Pane container, Consumer<String> console) {
+        TitledPane t1 = new TitledPane("TitledPane 1", new Button("Button 1"));
+
+        container.getChildren().add(t1);
+    }
+}

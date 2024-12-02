@@ -1,7 +1,7 @@
 plugins {
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.7'
-    id 'org.beryx.jlink' version '2.10.1'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'org.beryx.jlink' version '3.0.1'
 }
 
 repositories {
@@ -9,11 +9,14 @@ repositories {
 }
 
 javafx {
-    version = 12
+    version = '23-ea+22'
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
-mainClassName = "$moduleName/org.modernclients.Main"
+application {
+    mainModule = "modernclients"
+    mainClassName = "org.modernclients.Main"
+}
 
 jlink {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
@@ -23,10 +26,10 @@ jlink {
     jpackage {
         if (javafx.getPlatform().name() == "OSX") {
             installerType = "dmg"
-            jpackageHome = "/Users/<user>/Downloads/jdk-13.jdk/Contents/Home"
+            jpackageHome = "/Users/<user>/Downloads/jdk-22.jdk/Contents/Home"
         } else if (javafx.getPlatform().name() == "WINDOWS") {
             installerType = "exe"
-            jpackageHome = "C:\\Users\\<user>\\Downloads\\jdk-13"
+            jpackageHome = "C:\\Users\\<user>\\Downloads\\jdk-23"
             installerOptions = ['--win-menu', '--win-shortcut', '--win-dir-chooser']
         }
     }

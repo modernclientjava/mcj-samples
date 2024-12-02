@@ -10,10 +10,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>11</maven.compiler.release>
-        <javafx.version>17-ea+14</javafx.version>
-        <javafx.maven.plugin.version>0.0.6</javafx.maven.plugin.version>
-        <gluonfx.maven.plugin.version>1.0.2</gluonfx.maven.plugin.version>
+        <maven.compiler.release>17</maven.compiler.release>
+        <javafx.version>21.0.2</javafx.version>
+        <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
+        <gluonfx.maven.plugin.version>1.0.23</gluonfx.maven.plugin.version>
         <runtime.jvm.options/>
         <runtime.options/>
         <remote.host.name/>
@@ -54,6 +54,7 @@
                 <configuration>
                     <target>${gluonfx.target}</target>
                     <mainClass>${main.class}</mainClass>
+                    <nativeImageArgs>-H:PageSize=16384</nativeImageArgs>
                     <runtimeArgs>${runtime.options}</runtimeArgs>
                     <remoteHostName>${remote.host.name}</remoteHostName>
                     <remoteDir>${remote.dir}</remoteDir>
@@ -70,9 +71,8 @@
                 <remote.host.name>pi@raspberrypi.local</remote.host.name>
                 <remote.dir>/home/pi/ModernClients/ch12-RaspberryPi/Sample6</remote.dir>
                 <runtime.options>-Duse.fullscreen=true,-Dmonocle.platform=EGL,-Dembedded=monocle,-Dglass.platform=Monocle</runtime.options>
-                <runtime.jvm.options>-Dmonocle.egl.lib=/opt/javafx-sdk-17/lib/libgluon_drm-1.1.6.so,${runtime.options}</runtime.jvm.options>
+                <runtime.jvm.options>-Dmonocle.egl.lib=/opt/javafx-sdk-23/lib/libgluon_drm-1.1.7.so,${runtime.options}</runtime.jvm.options>
             </properties>
         </profile>
     </profiles>
-
 </project>

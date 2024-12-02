@@ -1,22 +1,27 @@
 plugins {
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
-    id 'org.hidetake.ssh' version '2.10.1'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'org.hidetake.ssh' version '2.11.2'
 }
 
 repositories {
     mavenCentral()
 }
 
+application {
+    mainModule = 'hellofx'
+    mainClass = 'org.modernclients.raspberrypi.MainApp'
+}
+mainClassName = "hellofx/org.modernclients.raspberrypi.MainApp"
+
 javafx {
+    version = '23-ea+22'
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
-mainClassName = "$moduleName/org.modernclients.raspberrypi.MainApp"
-
-def workingDir = '/home/pi/ModernClients/ch12-RaspberryPi/'
-def javaHome = '/usr'
-def javafxHome = '/opt/javafx-sdk-17/lib'
+def workingDir = '/home/pi/ModernClients/ch12-RaspberryPi/Sample5'
+def javaHome = '/home/pi/.sdkman/candidates/java/current'
+def javafxHome = '/opt/javafx-sdk-23/lib'
 
 task libs(type: Copy) {
     dependsOn 'jar'
@@ -25,7 +30,7 @@ task libs(type: Copy) {
 }
 
 remotes {
-    pi17 {
+    pi23 {
         host = 'raspberrypi.local'
         user = 'pi'
         password = 'pi'
@@ -39,19 +44,18 @@ task runRemoteEmbedded {
     }
     doLast {
         ssh.run {
-            session(remotes.pi17) {
-                execute "mkdir -p ${workingDir}/${project.name}/dist"
+            session(remotes.pi23) {
+                execute "mkdir -p ${workingDir}/dist"
 
                 fileTree("${buildDir}/libs")
                         .filter { it.isFile() && ! it.name.startsWith('javafx')}
                         .files
-                        .each { put from:it, into: "${workingDir}/${project.name}/dist/${it.name}"}
+                        .each { put from:it, into: "${workingDir}/dist/${it.name}"}
 
                 executeSudo "-E ${javaHome}/bin/java -Dfile.encoding=UTF-8 " +
-                        "--module-path=${javafxHome}:${workingDir}/${project.name}/dist " +
+                        "--module-path=${javafxHome}:${workingDir}/dist " +
                         "-Dmonocle.platform=EGL -Dembedded=monocle -Dglass.platform=Monocle " +
-                        "-Dmonocle.egl.lib=${javafxHome}/libgluon_drm-1.1.6.so " +
-                        "-classpath '${workingDir}/${project.name}/dist/*' " +
+                        "-Dmonocle.egl.lib=${javafxHome}/libgluon_drm-1.1.7.so " +
                         "-m ${project.mainClassName}"
             }
         }

@@ -1,8 +1,8 @@
 package org.modernclients.raspberrypi.gps.service;
 
-import com.pi4j.io.gpio.GpioController;
-import com.pi4j.io.gpio.GpioFactory;
-import com.pi4j.io.serial.*;
+import com.fazecast.jSerialComm.SerialPort;
+import com.fazecast.jSerialComm.SerialPortDataListener;
+import com.fazecast.jSerialComm.SerialPortEvent;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -10,7 +10,6 @@ import org.modernclients.raspberrypi.gps.model.GPSPosition;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.logging.Logger;
 
@@ -21,10 +20,9 @@ public class GPSService {
     @Inject
     private GPSPosition gpsPosition;
 
-    private Serial serial;
-    private GpioController gpio;
     private NMEAParser nmea;
     private StringBuilder gpsOutput;
+    private SerialPort comPort;
 
     private final StringProperty line = new SimpleStringProperty();
 
@@ -37,38 +35,31 @@ public class GPSService {
         nmea = new NMEAParser(gpsPosition);
         gpsOutput = new StringBuilder();
 
-        gpio = GpioFactory.getInstance();
-        serial = SerialFactory.createInstance();
-        serial.addListener(event -> {
-            try {
-                String s = event.getString(Charset.defaultCharset())
+        comPort = getSerialPort("ttyAMA0");
+        if (comPort == null) {
+            throw new RuntimeException("comPort is null");
+        }
+
+        comPort.openPort();
+        comPort.addDataListener(new SerialPortDataListener() {
+            @Override
+            public int getListeningEvents() {
+                return SerialPort.LISTENING_EVENT_DATA_AVAILABLE;
+            }
+
+            @Override
+            public void serialEvent(SerialPortEvent event) {
+                if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE) {
+                    return;
+                }
+                byte[] newData = new byte[comPort.bytesAvailable()];
+                comPort.readBytes(newData, newData.length);
+                gpsOutput.append(new String(newData, Charset.defaultCharset())
                         .replaceAll("\n", "")
-                        .replaceAll("\r", "");
-                gpsOutput.append(s);
+                        .replaceAll("\r", ""));
                 processReading();
-            } catch (IOException e) {
-                logger.warning("Error processing event " + event);
-                e.printStackTrace();
             }
         });
-
-        SerialConfig config = new SerialConfig();
-        try {
-            String defaultPort = SerialPort.getDefaultPort();
-            logger.info("Connecting to default port = " + defaultPort);
-            config.device(defaultPort)
-                    .baud(Baud._9600)
-                    .dataBits(DataBits._8)
-                    .parity(Parity.NONE)
-                    .stopBits(StopBits._1)
-                    .flowControl(FlowControl.NONE);
-
-            serial.open(config);
-            logger.info("Connected: " + serial.isOpen());
-
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     private void processReading() {
@@ -105,16 +96,24 @@ public class GPSService {
     }
 
     public void stop() {
-        logger.info("Stopping Serial and GPIO");
-        if (serial != null) {
+        logger.info("Stopping SerialPort");
+        if (comPort != null) {
             try {
-                serial.close();
-            } catch (IOException e) {
+                comPort.removeDataListener();
+                comPort.closePort();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        if (gpio != null) {
-            gpio.shutdown();
+    }
+
+    private static SerialPort getSerialPort(String portName) {
+        SerialPort[] comPorts = SerialPort.getCommPorts();
+        for (SerialPort port : comPorts) {
+            if (portName.equals(port.getSystemPortName())) {
+                return port;
+            }
         }
+        return null;
     }
 }

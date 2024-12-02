@@ -1,7 +1,7 @@
 plugins {
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
-    id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.3'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.23'
 }
 
 repositories {
@@ -19,7 +19,7 @@ gluonfx {
 }
 
 javafx {
-    version = "17-ea+16"
+    version = "21.0.2"
     modules = [ "javafx.controls" ]
 }
 

@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.modernclients</groupId>
+    <artifactId>parent-project</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>21</maven.compiler.release>
+        <javafx.version>23-ea+22</javafx.version>
+        <javafx.plugin.version>0.0.8</javafx.plugin.version>
+    </properties>
+
+    <modules>
+        <module>ch02-JavafxFundamentals/myshapes</module>
+        <module>ch02-JavafxFundamentals/myshapes2</module>
+        <module>ch02-JavafxFundamentals/myshapesfxml</module>
+        <module>ch02-JavafxFundamentals/myshapesproperties</module>
+        <module>ch02-JavafxFundamentals/personui</module>
+        <module>ch02-JavafxFundamentals/personuirecord</module>
+
+        <module>ch03-PropertiesBindings/arraychangeevent</module>
+        <module>ch03-PropertiesBindings/bidirectional</module>
+        <module>ch03-PropertiesBindings/directextension</module>
+        <module>ch03-PropertiesBindings/factorymethods</module>
+        <module>ch03-PropertiesBindings/fluentbinding</module>
+        <module>ch03-PropertiesBindings/fxcollections</module>
+        <module>ch03-PropertiesBindings/javabeanadapters</module>
+        <module>ch03-PropertiesBindings/javafxbean</module>
+        <module>ch03-PropertiesBindings/listchangeevent</module>
+        <module>ch03-PropertiesBindings/lowlevelbinding</module>
+        <module>ch03-PropertiesBindings/mapchangeevent</module>
+        <module>ch03-PropertiesBindings/numericproperties</module>
+        <module>ch03-PropertiesBindings/observablelist</module>
+        <module>ch03-PropertiesBindings/properties</module>
+        <module>ch03-PropertiesBindings/selectbinding</module>
+        <module>ch03-PropertiesBindings/setchangeevent</module>
+        <module>ch03-PropertiesBindings/whenbinding</module>
+
+        <module>ch04-JavaFXControls</module>
+
+        <module>ch05-masteringVisualsAndCSSDesign/applying</module>
+        <module>ch05-masteringVisualsAndCSSDesign/cssapi</module>
+        <module>ch05-masteringVisualsAndCSSDesign/introduction</module>
+
+        <module>ch06-HighPerformanceGraphics/HelloCanvas</module>
+        <module>ch06-HighPerformanceGraphics/HelloCanvasMany</module>
+        <module>ch06-HighPerformanceGraphics/ParticleSystem</module>
+        <module>ch06-HighPerformanceGraphics/ParticleSystemWithConfig</module>
+        <module>ch06-HighPerformanceGraphics/GameOfLife</module>
+
+        <module>ch07-BridgingSwingAndJavaFX/fxinswing</module>
+        <module>ch07-BridgingSwingAndJavaFX/multifx-in-swing</module>
+        <module>ch07-BridgingSwingAndJavaFX/webview-in-swing</module>
+        <module>ch07-BridgingSwingAndJavaFX/interactivefx</module>
+        <module>ch07-BridgingSwingAndJavaFX/bidirectionalfx</module>
+        <module>ch07-BridgingSwingAndJavaFX/multifx-in-swing-dynamic</module>
+        <module>ch07-BridgingSwingAndJavaFX/multifx-in-swing-dynamic-enhanced</module>
+        <module>ch07-BridgingSwingAndJavaFX/swingdndfx</module>
+        <module>ch07-BridgingSwingAndJavaFX/3dfx-in-swing</module>
+        <module>ch07-BridgingSwingAndJavaFX/swinginfx</module>
+
+        <module>ch08-3Dgraphics/simplesphere</module>
+        <module>ch08-3Dgraphics/spherecylinderbox</module>
+        <module>ch08-3Dgraphics/shapesandmesh</module>
+        <module>ch08-3Dgraphics/perspectivecamera</module>
+        <module>ch08-3Dgraphics/lightdemo</module>
+        <module>ch08-3Dgraphics/specularcolordemo</module>
+        <module>ch08-3Dgraphics/earthsphere</module>
+        <module>ch08-3Dgraphics/eventdemo</module>
+        <module>ch08-3Dgraphics/fxyzdemo</module>
+
+        <module>ch09-WebAndCloud/WebView</module>
+        <module>ch09-WebAndCloud/WebViewAction</module>
+        <module>ch09-WebAndCloud/WebViewHistory</module>
+        <module>ch09-WebAndCloud/WebViewProgress</module>
+        <module>ch09-WebAndCloud/WeatherApp1</module>
+        <module>ch09-WebAndCloud/WeatherApp2</module>
+        <module>ch09-WebAndCloud/WeatherApp3</module>
+
+        <module>ch12-RaspberryPi/Sample3</module>
+        <module>ch12-RaspberryPi/Sample7</module>
+
+        <module>ch13-MachineLearning</module>
+
+        <module>ch14-JavaFXScience/hellond4j</module>
+        <module>ch14-JavaFXScience/standalone</module>
+        <module>ch14-JavaFXScience/nd4jshell</module>
+    </modules>
+</project>

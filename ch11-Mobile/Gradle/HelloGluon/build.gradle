@@ -1,7 +1,7 @@
 plugins {
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
-    id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.3'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.23'
 }
 
 repositories {
@@ -12,7 +12,19 @@ repositories {
 }
 
 dependencies {
-    implementation "com.gluonhq:charm-glisten:6.0.6"
+    implementation "com.gluonhq:charm-glisten:6.2.3"
+}
+
+application {
+    mainClass = "com.gluonhq.hello.HelloGluon"
+    mainModule = "hellogluon"
+}
+
+mainClassName = "hellogluon/com.gluonhq.hello.HelloGluon"
+
+javafx {
+    version = "21.0.2"
+    modules = [ "javafx.controls" ]
 }
 
 gluonfx {
@@ -22,15 +34,8 @@ gluonfx {
     }
 
     attachConfig {
-        version = "4.0.11"
+        version = "4.0.21"
         services 'display', 'lifecycle', 'statusbar', 'storage'
     }
 
 }
-
-javafx {
-    version = "17-ea+16"
-    modules = [ "javafx.controls" ]
-}
-
-mainClassName = "$moduleName/com.gluonhq.hello.HelloGluon"

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="326.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.modernclient.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="326.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.modernclients.fundamentals.FXMLController">
     <children>
       <SplitPane dividerPositions="0.3411371237458194" prefHeight="326.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(aliceblue, lightblue);;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>

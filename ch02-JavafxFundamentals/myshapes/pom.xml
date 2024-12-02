@@ -4,7 +4,14 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.modernclients</groupId>
+    <parent>
+        <groupId>org.modernclients</groupId>
+        <artifactId>parent-project</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <groupId>org.modernclients.fundamentals</groupId>
     <artifactId>myshapes</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -12,11 +19,7 @@
     <name>MyShapes</name>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>11</maven.compiler.release>
-        <javafx.version>17-ea+6</javafx.version>
-        <javafx.plugin.version>0.0.5</javafx.plugin.version>
-        <main.class>org.modernclient.MyShapes</main.class>
+        <main.class>org.modernclients.fundamentals.MyShapes</main.class>
     </properties>
 
     <dependencies>

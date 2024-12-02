@@ -4,6 +4,7 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.util.Subscription;
 
 public class PropertiesExample {
     private static IntegerProperty i1;
@@ -13,6 +14,9 @@ public class PropertiesExample {
         addAndRemoveInvalidationListener();
         addAndRemoveChangeListener();
         bindAndUnbindOnePropertyToAnother();
+        subscribeAndUnsubscribeRunnable();
+        subscribeAndUnsubscribeConsumer();
+        subscribeAndUnsubscribeBiConsumer();
     }
 
     private static void createProperty() {
@@ -97,5 +101,74 @@ public class PropertiesExample {
         System.out.println("Calling i1.set(8192).");
         i1.set(8192);
         System.out.println("i2.get() = " + i2.get());
+    }
+
+    private static void subscribeAndUnsubscribeRunnable() {
+        System.out.println();
+
+        System.out.println("Add subscriber, without eager evaluation");
+        Subscription subscription = i1.subscribe(() -> {
+            System.out.println(
+                    "The observable has been " +
+                            "invalidated: " +
+                            i1 + ".");
+        });
+
+        System.out.println("Calling i1.set(2048).");
+        i1.set(2048);
+
+        System.out.println("Calling i1.setValue(3072).");
+        i1.setValue(3072);
+
+        subscription.unsubscribe();
+        System.out.println("Unsubscribed.");
+
+        System.out.println("Calling i1.set(4096).");
+        i1.set(4096);
+    }
+
+    private static void subscribeAndUnsubscribeConsumer() {
+        System.out.println();
+
+        System.out.println("Add subscriber, with eager evaluation");
+        Subscription subscription = i1.subscribe(newValue -> {
+            System.out.println(
+                    "The observableValue has " +
+                            "changed: newValue = " +
+                            newValue);
+        });
+        System.out.println("Note the subscriber was already called.");
+
+        System.out.println("Calling i1.set(5120).");
+        i1.set(5120);
+
+        subscription.unsubscribe();
+        System.out.println("Unsubscribed.");
+
+        System.out.println("Calling i1.set(6144).");
+        i1.set(6144);
+    }
+
+    private static void subscribeAndUnsubscribeBiConsumer() {
+        System.out.println();
+
+        System.out.println("Add subscriber, without eager evaluation");
+        Subscription subscription = i1.subscribe((oldValue, newValue) -> {
+            System.out.println(
+                    "The observableValue has " +
+                            "changed: oldValue = " +
+                            oldValue +
+                            ", newValue = " +
+                            newValue);
+        });
+
+        System.out.println("Calling i1.set(5120).");
+        i1.set(5120);
+
+        subscription.unsubscribe();
+        System.out.println("Unsubscribed.");
+
+        System.out.println("Calling i1.set(6144).");
+        i1.set(6144);
     }
 }

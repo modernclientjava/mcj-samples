@@ -1,8 +1,8 @@
 ## Home-made in-car navigation system
 
-JavaFX 11 interface for the Raspberry Pi and a GPS connected to the UART
+JavaFX 23 interface for the Raspberry Pi 5 and a GPS connected to the UART
 
-Requires Java 11 and JavaFX 11
+Requires Java 21 and JavaFX 23
 
 ### From a Desktop machine 
 
